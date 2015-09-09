@@ -1,0 +1,45 @@
+{
+  "name": "kerplunk-instagram",
+  "displayName": "Instagram",
+  "description": "",
+  "version": "0.0.1",
+  "kerplunk": {
+    "permissions": {
+      "kerplunk-activityitem": {
+        "models": [
+          "ActivityItem"
+        ]
+      },
+      "kerplunk-identity": {
+        "models": [
+          "Identity"
+        ]
+      }
+    },
+    "recommended": [
+      "kerplunk-instagram-tweets",
+      "kerplunk-gallery"
+    ]
+  },
+  "keywords": [
+    "kerplunk-plugin",
+    "kp:Social Networking",
+    "kp:Instagram"
+  ],
+  "engines": {
+    "node": ">=0.10"
+  },
+  "main": "./lib/instagram.js",
+  "dependencies": {
+    "instagram-node": "^0.5.7",
+    "lodash": "^3.10.0",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.1",
+    "glut": "0.0.1",
+    "glut-coffee-amdify": "0.0.0",
+    "gulp": "^3.8.8",
+    "gulp-coffee": "^2.3.1"
+  }
+}
