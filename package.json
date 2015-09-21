@@ -33,7 +33,8 @@
   "dependencies": {
     "instagram-node": "^0.5.7",
     "lodash": "^3.10.0",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "when": "^3.7.2"
   },
   "devDependencies": {
     "coffee-script": "^1.9.1",

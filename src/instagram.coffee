@@ -1,3 +1,5 @@
+Promise = require 'when'
+
 SetupModule = require './setup'
 APIModule = require './api'
 
@@ -48,13 +50,12 @@ module.exports = (System) ->
         return next err if err
         res.send 'Done.'
 
-  crons: [
-    {
+  jobs:
+    feed:
       frequency: 120
       task: (finished) ->
-        console.log 'get instagram feed'
-        API.feed (err) ->
-          console.log err if err
-          finished()
-    }
-  ]
+        Promise.promise (resolve, reject) ->
+          console.log 'get instagram feed'
+          API.feed (err) ->
+            return reject err if err
+            resolve()
