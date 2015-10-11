@@ -70,23 +70,26 @@ module.exports = (System, API) ->
           throw err if err
           res.redirect '/admin/instagram/connect'
 
-
-
     oauth: (req, res, next) ->
       console.log "Instagram: starting oauth"
       path = url.parse req.url, true
 
-      API.prep (err, settings, ig) ->
-        if settings.access_token
-          req.flash "Access token already exists. You'll need to delete it before trying to reconnect"
-          return res.redirect '/admin/instagram/connect'
+      API.getSettings (err, settings) ->
+        igSettings =
+          client_id: settings.client_id
+          client_secret: settings.client_secret
+        ig = API.getInstagram igSettings
         res.writeHead 303,
           location: ig.get_authorization_url settings.callback_url, {scope: "comments likes"}
         res.end()
 
     auth: (req, res, next) ->
       console.log "Instagram: auth received..."
-      API.prep (err, settings, ig) ->
+      API.getSettings (err, settings) ->
+        igSettings =
+          client_id: settings.client_id
+          client_secret: settings.client_secret
+        ig = API.getInstagram igSettings
         throw err if err
 
         ig.authorize_user req.query.code, settings.callback_url, (err, result) ->
