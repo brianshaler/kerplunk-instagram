@@ -171,6 +171,8 @@ module.exports = (System) ->
           media: [image]
           postedAt: new Date post.created_time * 1000
           data: post
+          attributes:
+            isFriend: true
       data.item.location = [lng, lat] if lng != 0 and lat != 0
 
       ActivityItem.getOrCreate data, (err, activityItem, identity) ->
