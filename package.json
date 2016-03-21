@@ -32,7 +32,7 @@
   "main": "./lib/instagram.js",
   "dependencies": {
     "instagram-node": "^0.5.7",
-    "lodash": "^3.10.0",
+    "lodash": "^4.6.1",
     "react": "^0.13.3",
     "when": "^3.7.2"
   },
